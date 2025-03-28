@@ -7,6 +7,8 @@ import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 
+import java.util.List;
+
 /**
  * @description
  * @Author zs
@@ -26,4 +28,6 @@ public interface CategoryMapper {
     Page<Category> pageQuery(CategoryPageQueryDTO categoryPageQueryDTO);
 
     void update(Category category);
+
+    List<Category> list(Integer type);
 }
