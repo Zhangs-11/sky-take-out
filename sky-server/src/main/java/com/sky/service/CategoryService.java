@@ -10,4 +10,6 @@ import com.sky.dto.CategoryDTO;
 public interface CategoryService {
 
     void save(CategoryDTO categoryDTO);
+
+    void deleteById(Long id);
 }
