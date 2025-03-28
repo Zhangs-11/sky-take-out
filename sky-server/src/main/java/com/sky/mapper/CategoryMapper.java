@@ -24,4 +24,6 @@ public interface CategoryMapper {
     void deleteById(Long id);
 
     Page<Category> pageQuery(CategoryPageQueryDTO categoryPageQueryDTO);
+
+    void update(Category category);
 }

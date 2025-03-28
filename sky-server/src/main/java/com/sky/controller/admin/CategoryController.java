@@ -52,12 +52,30 @@ public class CategoryController {
         return Result.success();
     }
 
+    /**
+     * 分类分页查询
+     * @param categoryPageQueryDTO
+     * @return
+     */
     @GetMapping("/page")
     @ApiOperation("分类分页查询")
     public Result<PageResult> page(CategoryPageQueryDTO categoryPageQueryDTO){
         log.info("分类分页查询：{}", categoryPageQueryDTO);
         PageResult pageResult = categoryService.pageQuery(categoryPageQueryDTO);
         return Result.success(pageResult);
+    }
+
+    /**
+     * 修改菜品
+     * @param categoryDTO
+     * @return
+     */
+    @PutMapping
+    @ApiOperation("修改菜品")
+    public Result update(@RequestBody CategoryDTO categoryDTO){
+        log.info("修改菜品：{}", categoryDTO);
+        categoryService.update(categoryDTO);
+        return Result.success();
     }
 
 }

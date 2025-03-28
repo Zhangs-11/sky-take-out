@@ -88,4 +88,21 @@ public class CategoryServiceImpl implements CategoryService {
 
         return new PageResult(page.getTotal(), page.getResult());
     }
+
+    /**
+     * 修改菜品
+     *
+     * @param categoryDTO
+     */
+    @Override
+    public void update(CategoryDTO categoryDTO) {
+        Category category = new Category();
+        BeanUtils.copyProperties(categoryDTO, category);
+
+        // 设置修改人和修改时间
+        category.setUpdateUser(BaseContext.getCurrentId());
+        category.setUpdateTime(LocalDateTime.now());
+
+        categoryMapper.update(category);
+    }
 }
