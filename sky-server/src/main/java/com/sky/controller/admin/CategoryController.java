@@ -28,12 +28,13 @@ public class CategoryController {
 
     /**
      * 新增分类
+     *
      * @param categoryDTO
      * @return
      */
     @PostMapping
     @ApiOperation("新增分类")
-    public Result save(@RequestBody CategoryDTO categoryDTO){
+    public Result save(@RequestBody CategoryDTO categoryDTO) {
         log.info("新增分类：{}", categoryDTO);
         categoryService.save(categoryDTO);
         return Result.success();
@@ -41,12 +42,13 @@ public class CategoryController {
 
     /**
      * 根据id删除分类
+     *
      * @param id
      * @return
      */
     @DeleteMapping
     @ApiOperation("根据id删除分类")
-    public Result deleteById(Long id){
+    public Result deleteById(Long id) {
         log.info("根据id删除分类: {}", id);
         categoryService.deleteById(id);
         return Result.success();
@@ -54,12 +56,13 @@ public class CategoryController {
 
     /**
      * 分类分页查询
+     *
      * @param categoryPageQueryDTO
      * @return
      */
     @GetMapping("/page")
     @ApiOperation("分类分页查询")
-    public Result<PageResult> page(CategoryPageQueryDTO categoryPageQueryDTO){
+    public Result<PageResult> page(CategoryPageQueryDTO categoryPageQueryDTO) {
         log.info("分类分页查询：{}", categoryPageQueryDTO);
         PageResult pageResult = categoryService.pageQuery(categoryPageQueryDTO);
         return Result.success(pageResult);
@@ -67,14 +70,22 @@ public class CategoryController {
 
     /**
      * 修改菜品
+     *
      * @param categoryDTO
      * @return
      */
     @PutMapping
     @ApiOperation("修改菜品")
-    public Result update(@RequestBody CategoryDTO categoryDTO){
+    public Result update(@RequestBody CategoryDTO categoryDTO) {
         log.info("修改菜品：{}", categoryDTO);
         categoryService.update(categoryDTO);
+        return Result.success();
+    }
+
+    @PostMapping("/status/{status}")
+    @ApiOperation("启用禁用分类")
+    public Result startOrStop(@PathVariable("status") Integer status, Long id) {
+        categoryService.startOrStop(status, id);
         return Result.success();
     }
 
