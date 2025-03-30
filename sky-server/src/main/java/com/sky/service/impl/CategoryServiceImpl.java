@@ -91,7 +91,7 @@ public class CategoryServiceImpl implements CategoryService {
     }
 
     /**
-     * 修改菜品
+     * 修改分类
      *
      * @param categoryDTO
      */
